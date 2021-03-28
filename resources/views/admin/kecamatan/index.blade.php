@@ -19,7 +19,7 @@
                                 <div class="col-md-12">
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table id="example1" class="table table-bordered table-striped">
+                                            <table id="table" class="table table-bordered table-striped">
                                                 <thead>
                                                     <tr class="bg-info">
                                                         <th>No</th>

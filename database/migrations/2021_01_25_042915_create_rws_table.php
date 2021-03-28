@@ -18,7 +18,7 @@ class CreateRwsTable extends Migration
             $table->bigInteger('id_kelurahan')->unsigned();
             $table->foreign('id_kelurahan')->references('id')->on('kelurahans')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nama_rw');
-            $table->string('nama_rt');
+            // $table->string('nama_rt');
             $table->timestamps();
         });
     }

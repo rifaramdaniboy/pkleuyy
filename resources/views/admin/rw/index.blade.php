@@ -18,14 +18,14 @@
                                 <div class="col-md-12">
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table id="example1" class="table table-bordered table-striped">
+                                            <table id="table" class="table table-bordered table-striped">
                                                 <thead>
                                                     <tr class="bg-info">
                                                         <center>
                                                             <th>No</th>
                                                             <th>Nama Kelurahan</th>
                                                             <th>Nama rw</th>
-                                                            <th>Nama Rt</th>
+                                                            {{-- <th>Nama Rt</th> --}}
                                                             <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -36,7 +36,7 @@
                                                             <th>{{ $no++ }}</th>
                                                             <th>{{ $item->kelurahan->nama_kelurahan }}</th>
                                                             <th>{{ $item->nama_rw }}</th>
-                                                            <th>{{ $item->nama_rt }}</th>
+                                                            {{-- <th>{{ $item->nama_rt }}</th> --}}
                                                             <td>
                                                                 <form action="{{ route('rw.destroy', $item->id) }}"
                                                                     method="POST">

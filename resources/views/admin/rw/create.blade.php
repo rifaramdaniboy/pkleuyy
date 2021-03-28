@@ -29,7 +29,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="from-group">
+                            {{-- <div class="from-group">
                                 <label for="">Nama Rt</label>
                                 <input type="text" name="nama_rt"
                                     class="form-control @error('nama_rt') is-invalid @enderror"
@@ -39,7 +39,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-block"> Simpan </button>
                             </div>

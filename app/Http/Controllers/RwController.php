@@ -43,7 +43,7 @@ class RwController extends Controller
         $rw = new Rw();
         $rw->id_kelurahan = $request->id_kelurahan;
         $rw->nama_rw = $request->nama_rw;
-        $rw->nama_rt = $request->nama_rt;
+        // $rw->nama_rt = $request->nama_rt;
         $rw->save();
         return redirect()->route('rw.index')->with(['succes' => 'Data Berhasil Di Tambah']);
     }
@@ -67,9 +67,9 @@ class RwController extends Controller
     public function edit($id)
     {
         $rw = Rw::findOrFail($id);
-        $rt = Rt::findOrFail($id);
+        // $rt = Rt::findOrFail($id);
         $kelurahan = Kelurahan::all();
-        return view('admin.rw.edit', compact('rw', 'rt', 'kelurahan'));
+        return view('admin.rw.edit', compact('rw', 'kelurahan'));
     }
 
     /**
@@ -84,7 +84,7 @@ class RwController extends Controller
         $rw = Rw::findOrFail($id);
         $rw->id_kelurahan = $request->id_kelurahan;
         $rw->nama_rw = $request->nama_rw;
-        $rt->nama_rt = $request->nama_rt;
+        // $rt->nama_rt = $request->nama_rt;
         $rw->save();
         return redirect()->route('rw.index')->with(['succes' => 'Data Berhasil Di Edit']);
     }
@@ -98,7 +98,7 @@ class RwController extends Controller
     public function destroy($id)
     {
         $rw = Rw::findOrFail($id);
-        $rt = Rw::findOrFail($id);
+        // $rt = Rw::findOrFail($id);
         $rw->delete();
         return redirect()->route('rw.index')->with(['succes' => 'Data Berhasil Di Hapus']);
     }

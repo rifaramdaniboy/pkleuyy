@@ -1,114 +1,87 @@
-<!DOCTYPE html>
-<html>
+                    <!doctype html>
+                    <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>| Log in</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <head>
+                        <title>Login</title>
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-</head>
+                        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
+                            rel="stylesheet">
 
-<body class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="#"><b>kawal Covid</b></a>
-        </div>
-        <!-- /.login-logo -->
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                        <link rel="stylesheet"
+                            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-                <form action="{{ route('login') }}" method="post">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                            placeholder="Email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                        <link rel="stylesheet" href="{{ asset('assets/login/css/style.css') }}">
+
+                    </head>
+
+                    <body>
+                        <section class="ftco-section">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 text-center mb-5">
+                                        <h2 class="heading-section">Kawal Covid</h2>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 col-lg-5">
+                                        <div class="login-wrap p-4 p-md-5">
+                                            <div class="icon d-flex align-items-center justify-content-center">
+                                                <span class="fa fa-user-o"></span>
+                                            </div>
+                                            <h3 class="text-center mb-4">Have an account?</h3>
+                                            <form action="{{ route('login') }}" method="post" class="login-form">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <input type="email" name="email"
+                                                        class="form-control @error('email') is-invalid @enderror"
+                                                        placeholder="Email">
+                                                </div>
+                                                @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+
+                                                <div class="form-group d-flex">
+                                                    <input type="password" name="password"
+                                                        class="form-control @error('password') is-invalid @enderror"
+                                                        placeholder="Password">
+                                                </div>
+                                                @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+
+                                                <div class="form-group d-md-flex">
+                                                    <div class="w-50">
+                                                        <label class="checkbox-wrap checkbox-primary">Remember Me
+                                                            <input type="checkbox" checked>
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="w-50 text-md-right">
+                                                        <a href="#">Forgot Password</a>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit"
+                                                        class="btn btn-primary rounded submit p-2 px-4">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </section>
 
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" name="password"
-                            class="form-control  @error('password') is-invalid @enderror" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
+                        <script src="{{ asset('assets/login/js/jquery.min.js') }}"></script>
+                        <script src="{{ asset('assets/login/js/popper.js') }}"></script>
+                        <script src="{{ asset('assets/login/js/bootstrap.min.js') }}"></script>
+                        <script src="{{ asset('assets/login/js/main.js') }}"></script>
 
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
+                    </body>
 
-                <div class="social-auth-links text-center mb-3">
-                    <p>- OR -</p>
-                    <a href="#" class="btn btn-block btn-primary">
-                        <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-                    </a>
-                    <a href="#" class="btn btn-block btn-danger">
-                        <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-                    </a>
-                </div>
-                <!-- /.social-auth-links -->
-
-                <p class="mb-1">
-                    <a href="#">I forgot my password</a>
-                </p>
-                <p class="mb-0">
-                    <a href="{{ url('register') }}" class="text-center">Register a new membership</a>
-                </p>
-            </div>
-            <!-- /.login-card-body -->
-        </div>
-    </div>
-    <!-- /.login-box -->
-
-    <!-- jQuery -->
-    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
-
-</body>
-
-</html>
+                    </html>
