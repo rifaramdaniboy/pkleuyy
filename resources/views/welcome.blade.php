@@ -31,19 +31,17 @@
             <a class="navbar-brand" href="#"><span>Kawal Covid</span></a>
             <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
                 data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
+                
             </button>
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav nav ml-auto">
                     <li class="nav-item"><a href="#" class="nav-link" data-nav-section="home"><span>Dashboard</span></a>
                     </li>
-                    <li class="nav-item"><a href="#" class="nav-link" data-nav-section="about"><span>Data
-                                Indonesia</span></a>
+                    <li class="nav-item"><a href="#" class="nav-link" data-nav-section="about"><span>Live
+                                Data</span></a>
                     </li>
-                    <li class="nav-item"><a href="#" class="nav-link" data-nav-section="projects"><span>Data
-                                Global</span></a></li>
-                    <li class="nav-item"><a href="#" class="nav-link" data-nav-section="blog"><span>Berita</span></a>
+                    <li class="nav-item"><a href="#" class="nav-link" data-nav-section="blog"><span>About</span></a>
                     </li>
                     <li class="nav-item"><a href="#" class="nav-link" data-nav-section="contact"><span>Kontak</span></a>
                     </li>
@@ -121,15 +119,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col-md-6 col-lg-3 d-flex">
-                    <div class="align-self-stretch box p-4 text-center">
-                        <div class="icon d-flex align-items-center justify-content-center">
-                            <span class="icon-map-signs"></span>
-                        </div>
-                        <h3 class="mb-4">Address</h3>
-                        <p> Jl Bintaro Permai Raya 105, Dki Jakarta</p>
-                    </div>
-                </div> --}}
                 <div class="col-md-12 col-lg-3 d-flex">
                     <div class="media block-12 services text-center d-block">
                         <div class="icon"><img src="{{ asset('assets/images/sedih.png') }}"></div>
@@ -149,103 +138,90 @@
         </div>
     </section>
 
-    <section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb" id="section-counter" data-section="about">
-        <div class="Container">
-            <div class="container_width">
-                <div class="card">
-                    <div class="container my-4">
-                        <div class="card-header ">
-                        </div>
-                        <div class="card-body">
-                            <h1 class="text-center my-3">Data Kasus Corona virus di Indonesia</h1>
-                            <div style="height:600px;overflow:auto;margin-right:15px;">
-                                <table class="table table-striped" fixed-header>
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Provinsi</th>
-                                            <th scope="col">Positif</th>
-                                            <th scope="col">Sembuh</th>
-                                            <th scope="col">Meninggal</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        @php
-                                            $no = 1;
-                                        @endphp
-
-                                        <tr>
-                                            @foreach ($tampil as $item)
-                                                <td> <?php echo $no++; ?></td>
-                                                <td>{{ $item->nama_provinsi }}</td>
-                                                <td>{{ number_format($item->jumlah_positif) }}</td>
-                                                <td>{{ number_format($item->jumlah_sembuh) }}</td>
-                                                <td>{{ number_format($item->jumlah_meninggal) }}</td>
-                                        </tr>
-                                    </tbody>
-                                    @endforeach
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+    <!-- ======= Data Kasus Indonesia ======= -->
+    <!-- ======= Data Kasus Indonesia ======= -->
+    <section class="hero-wrap js-fullheight" data-section="about">
+        <div class="container">
+            <div class="section-title" data-aos="zoom-out">
+                <h2>Data Kasus Indonesia</h2>
+            </div>
+            <div class="row content" data-aos="fade-up">
+                <div class="table-wrapper-scroll-y my-custom-scrollbar col-lg-12">
+                    <table class="table table-bordered table-striped mb-0 " width="100%">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Provinsi</th>
+                                <th>Positif</th>
+                                <th>Sembuh</th>
+                                <th>Meninggal</th>
+                        </thead>
+                        </tr>
+                        <tbody>
+                            @php
+                                $no = 1;
+                            @endphp
+                            @foreach ($tampil as $item)
+                                <tr>
+                                    <td>{{ $no++ }}</td>
+                                    <td> {{ $item->nama_provinsi }} </td>
+                                    <td> {{ $item->jumlah_positif }} </td>
+                                    <td> {{ $item->jumlah_sembuh }} </td>
+                                    <td> {{ $item->jumlah_meninggal }} </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
+            </div>
+        </div>
+        </div>
     </section>
+    <!-- End Data Kasus Indonesia -->
 
-    <section class="ftco-section ftco-project bg-light" data-section="projects">
-        <div class="Container">
-            <div class="container_width">
-                <div class="card">
-                    <div class="container my-4">
-                        <div class="card-header ">
-                        </div>
-                        <div class="card-body">
-                            <h1 class="text-center mb-4">Data Kasus Corona virus di Dunia</h1>
-                            <div style="height:600px;overflow:auto;margin-right:15px;">
-                                <table class="table table-striped" fixed-header>
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Negara</th>
-                                            <th scope="col">Positif</th>
-                                            <th scope="col">Sembuh</th>
-                                            <th scope="col">Meninggal</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        @php
-                                            $no = 1;
-                                        @endphp
-
-                                        @foreach ($dunia as $data)
-                                            <tr>
-                                                <td> <?php echo $no++; ?></td>
-                                                <td> <?php echo $data['attributes']['Country_Region'];
-                                                    ?></td>
-                                                <td> <?php echo
-                                                    number_format($data['attributes']['Confirmed']); ?>
-                                                </td>
-                                                <td><?php echo
-                                                    number_format($data['attributes']['Recovered']); ?>
-                                                </td>
-                                                <td><?php echo
-                                                    number_format($data['attributes']['Deaths']); ?>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+    <section class="ftco-section ftco-services ftco-no-pt" data-section="about">
+        <div class="container">
+            <div class="section-title" data-aos="zoom-out">
+                <h2>Data Kasus Global</h2>
+            </div>
+            <div style="height:600px;overflow:auto;margin-right:15px;">
+                <table class="table table-striped table-bordered data">
+                    <thead class="text-white">
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Negara</th>
+                            <th scope="col">Positif</th>
+                            <th scope="col">Sembuh</th>
+                            <th scope="col">Meninggal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                            $no = 1;
+                        @endphp
+                        @foreach ($dunia as $data)
+                            <tr>
+                                <td> <?php echo $no++; ?></td>
+                                <td> <?php echo $data['attributes']['Country_Region']; ?>
+                                </td>
+                                <td> <?php echo number_format($data['attributes']['Confirmed']); ?></td>
+                                <td><?php echo number_format($data['attributes']['Recovered']); ?></td>
+                                <td><?php echo number_format($data['attributes']['Deaths']); ?></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
     </section>
+    <!-- End Data Kasus Indonesia -->
 
     <section class="ftco-section bg-light" data-section="blog">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-5">
                 <div class="col-md-7 heading-section text-center ftco-animate">
-                    <h2 class="mb-4">Berita</h2>
+                    <h2 class="mb-4">About</h2>
                 </div>
             </div>
             <div class="row d-flex">

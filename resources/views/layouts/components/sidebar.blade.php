@@ -172,8 +172,12 @@
             <a class="c-sidebar-nav-link {{ request()->is('home/') ? 'c-active' : '' }}" href="{{ url('/home') }}">
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}"></use>
-                </svg> Dashboard<span class="badge badge-info">NEW</span></a>
+                </svg> Dashboard</a>
         </li>
+        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ url('report') }}">
+                <svg class="c-sidebar-nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-drop') }}"></use>
+                </svg> Laporan</a></li>
         <li class="c-sidebar-nav-title">Data Indonesia</li>
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link {{ request()->is('admin/provinsi*') ? 'c-active' : '' }}"

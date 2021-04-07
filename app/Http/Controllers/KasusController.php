@@ -20,7 +20,7 @@ class KasusController extends Controller
     public function index()
     {
         $laporan = Kasus::with('rw')->get();
-        return view('admin.laporan.index',compact('laporan'));
+        return view('admin.laporan.index', compact('laporan'));
     }
 
     /**
@@ -31,7 +31,7 @@ class KasusController extends Controller
     public function create()
     {
         $rw = Rw::all();
-        return view('admin.laporan.create',compact('rw'));
+        return view('admin.laporan.create', compact('rw'));
     }
 
     /**
@@ -42,14 +42,34 @@ class KasusController extends Controller
      */
     public function store(Request $request)
     {
+        $positif = (int)$request->jumlah_positif - $request->jumlah_meninggal;
+        $meninggal = $request->jumlah_positif - $request->jumlah_sembuh;
+        $request->validate([
+            'jumlah_positif' => 'required|numeric|min:1',
+            'jumlah_sembuh' => "required|numeric|min:1|max:$positif",
+            'jumlah_meninggal' => "required||numeric|min:1|max:$meninggal",
+            'tanggal' => 'required',
+        ], [
+            'jumlah_positif.required' => 'Data tidak boleh kosong',
+            'jumlah_positif.min' => 'Jumlah positif tidak boleh kurang dari 1',
+            'jumlah_sembuh.required' => 'Data tidak boleh kosong',
+            'jumlah_sembuh.min' => 'Jumlah sembuh tidak boleh kurang dari 1',
+            'jumlah_sembuh.max' => 'Jumlah sembuh tidak boleh melebihi jumlah Positif',
+            'jumlah_meninggal.required' => 'Data tidak boleh kosong',
+            'jumlah_meninggal.min' => 'Jumlah meninggal tidak boleh kurang dari 1',
+            'jumlah_meninggal.max' => 'Jumlah meninggal tidak boleh melebihi jumlah Positif atau Sembuh ',
+            'tanggal.required' => 'Data tidak boleh kosong',
+        ]);
+
+
         $laporan = new Kasus();
         $laporan->id_rw = $request->id_rw;
         $laporan->jumlah_positif = $request->jumlah_positif;
         $laporan->jumlah_sembuh = $request->jumlah_sembuh;
         $laporan->jumlah_meninggal = $request->jumlah_meninggal;
-        $laporan->tanggal =$request->tanggal;
+        $laporan->tanggal = $request->tanggal;
         $laporan->save();
-        return redirect()->route('laporan.index')->with(['succes'=>'Data Berhasil Di simpan']);
+        return redirect()->route('laporan.index')->with(['succes' => 'Data Berhasil Di simpan']);
     }
 
     /**
@@ -63,7 +83,7 @@ class KasusController extends Controller
         $laporan = Kasus::findOrFail($id);
         $rw = Rw::all();
         $selected = $laporan->rw->pluck('id')->toArray();
-        return view('admin.laporan.edit',compact('laporan','rw','selected'));
+        return view('admin.laporan.edit', compact('laporan', 'rw', 'selected'));
     }
 
     /**
@@ -77,7 +97,7 @@ class KasusController extends Controller
         $laporan = Kasus::findOrFail($id);
         $rw = Rw::all();
         $selected = $laporan->rw->pluck('id')->toArray();
-        return view('admin.laporan.edit',compact('laporan','rw','selected'));
+        return view('admin.laporan.edit', compact('laporan', 'rw', 'selected'));
     }
 
     /**
@@ -96,7 +116,7 @@ class KasusController extends Controller
         $laporan->jumlah_meninggal = $request->jumlah_meninggal;
         $laporan->tanggal = $request->tanggal;
         $laporan->save();
-        return redirect()->route('laporan.index')->with(['succes'=>'Data Berhasil Di Update']);
+        return redirect()->route('laporan.index')->with(['succes' => 'Data Berhasil Di Update']);
     }
 
     /**
@@ -109,6 +129,6 @@ class KasusController extends Controller
     {
         $laporan = Kasus::findOrFail($id);
         $laporan->delete();
-        return redirect()->route('laporan.index')->with(['succes'=>'Data Berhasil Di Hapus']);
+        return redirect()->route('laporan.index')->with(['succes' => 'Data Berhasil Di Hapus']);
     }
 }

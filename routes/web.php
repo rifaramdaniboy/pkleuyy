@@ -7,18 +7,8 @@ use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\KelurahanController;
 use App\Http\Controllers\RwController;
 use App\Http\Controllers\KasusController;
+use App\Http\Controllers\LaporanController;
 use Illuminate\Support\Facades\Auth;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,3 +30,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('rw', RwController::class);
     Route::resource('laporan', KasusController::class);
 });
+
+Route::get('report', [LaporanController::class, 'index']);
+Route::post('report1', [LaporanController::class, 'ReportProvinsi']);
+Route::get('pdfkasus', [LaporanController::class, 'cetak_pdf'])->name('pdfkasus');

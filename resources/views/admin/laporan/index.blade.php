@@ -20,7 +20,7 @@
                                         <div class="table-responsive">
                                             <table id="table" class="table table-bordered table-striped">
                                                 <thead>
-                                                    <tr class="bg-info">
+                                                    <tr>
                                                         <th>No</th>
                                                         <th>Lokasi</th>
                                                         <th>Rw</th>
